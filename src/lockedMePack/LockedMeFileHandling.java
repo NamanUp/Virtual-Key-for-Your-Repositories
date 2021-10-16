@@ -6,10 +6,12 @@ import java.util.Arrays;
 
 public class LockedMeFileHandling {
 
-	public static String getDirectory = System.getProperty("user.dir");
-	public static String mainPackage = getDirectory+File.separator+"fileStoragePack";
+	//Constants for fileStoragePackage directory inside Project
+	public static String getLocalDirectory = System.getProperty("user.dir");
+	public static String setMainDirectory = getLocalDirectory+File.separator+"fileStoragePackage";
 	private static File file;
 
+	//Creating fileStoragePackage directory if not present in the Project directory
 	public static void createMainFolderIfNotPresent(String folderName) {
 		file = new File(folderName);
 		if (!file.exists()) {
@@ -17,12 +19,12 @@ public class LockedMeFileHandling {
 		}
 	}
 
+	//Method to display all the files present inside fileStoragePackage package
 	public static void displayAllFiles(){
-		createMainFolderIfNotPresent("fileStoragePack");
-		file = new File(mainPackage);
-		if (file.list().length == 0) System.out.println("\nEither the Folder is empty or not been created. Please add files in the main directory");
+		file = new File(setMainDirectory);
+		if (file.list().length == 0) System.out.println("\nThe Folder is empty. Please add files in the directory \n"+setMainDirectory);
 		else{
-			System.out.println("\nThe Files present in this directory are -\n");
+			System.out.println("\nFiles present in this directory are -\n");
 			String[] allFiles = file.list();
 			Arrays.sort(allFiles);
 			for (String eachFile: allFiles) {
@@ -31,47 +33,46 @@ public class LockedMeFileHandling {
 		}
 	}
 
+	//Method to add the files in inside fileStoragePackage package
 	public static void addFiles(String fileName) throws IOException {
-		createMainFolderIfNotPresent("fileStoragePack");
-		String filePath = mainPackage+File.separator+fileName;
+		String filePath = setMainDirectory +File.separator+fileName;
 		File newFile = new File(filePath);
 		String[] filesList = file.list();
 		for (String existingFile : filesList) {
 			if (fileName.equalsIgnoreCase(existingFile)){
-				System.out.println("-> File Already exists....Returning back to Sub Menu");
+				System.out.println("-> File Already exists. Returning back to Sub Menu");
 				return;
 			}
 		}
 		newFile.createNewFile();
-		System.out.println("-> "+fileName+" has been created");
+		System.out.println("-> "+fileName+" has been created!");
 	}
-	
+
+	//Method to delete the files in inside fileStoragePackage package
 	public static void deleteFiles(String deleteFile){
-		createMainFolderIfNotPresent("fileStoragePack");
-		File filepath = new File(mainPackage+File.separator+deleteFile);
-		file = new File(mainPackage);
+		File filepath = new File(setMainDirectory +File.separator+deleteFile);
+		file = new File(setMainDirectory);
 		String[] existingFiles = file.list();
 		for (String existingFile: existingFiles) {
 			if(existingFile.equals(deleteFile)){
 				filepath.delete();
-				System.out.println("\n-> File "+deleteFile+" is deleted from this directory ");
+				System.out.println("\n-> File "+deleteFile+" is deleted from the directory \n"+setMainDirectory);
 				return;
 			}
 		}
-		System.out.println("\n-> File Not Found....Returning back to Sub Menu");
+		System.out.println("\n-> File Not Found. Returning back to Sub Menu");
 	}
-	
+
+	//Method to search the files in inside fileStoragePackage package
 	public static void searchFiles(String searchFile){
-		createMainFolderIfNotPresent("fileStoragePack");
-		file = new File(mainPackage);
+		file = new File(setMainDirectory);
 		String[] existingFiles = file.list();
 		for (String existingFile: existingFiles) {
 			if(existingFile.equals(searchFile)){
-				System.out.println("\n-> "+searchFile+" file is present in this directory ");
+				System.out.println("\n-> "+searchFile+" file is present in the directory");
 				return;
 			}
 		}
-		System.out.println("\n-> File Not Found....Returning back to Sub Menu");
+		System.out.println("\n-> "+searchFile+" file Not Found. Returning back to Sub Menu");
 	}
-
 }

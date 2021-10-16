@@ -8,11 +8,10 @@ public class LockedMeWelcome {
 		
 		System.out.println("----------------My Name is "+developerName+", the developer of this application---------------\n");
 
-		System.out.println("\nThe Directory which will be used for this Application is \n"+LockedMeFileHandling.mainPackage
-				+"\nNote -> If this Directory is not there then it will be made as soon as you create one File.");
+		LockedMeFileHandling.createMainFolderIfNotPresent("fileStoragePackage");
 	}
 	
-	public static void firstMenu(){
+	public static void mainMenu(){
 		System.out.println("\nMain Menu- \n");
 		
 		System.out.println("1. Retrieve all the existing files from a directory.\n"+
@@ -22,7 +21,7 @@ public class LockedMeWelcome {
 		System.out.print("Enter the choice from the above operations here - ");
 	}
 
-	public static void secondMenu(){
+	public static void subMenu(){
 		System.out.println("\nSub Menu - \n");
 
 		System.out.println("1. Add files in a directory.\n"+

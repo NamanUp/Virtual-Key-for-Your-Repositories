@@ -8,5 +8,4 @@ public class LockedMeMain {
 
 		LockedMeChoiceHandle.firstMenuHandleChoices();
 	}
-
 }

@@ -3,8 +3,10 @@ package lockedMePack;
 import java.util.Scanner;
 
 public class LockedMeChoiceHandle {
+
+	//This method will handle choices made in the Main Menu
 	public static void firstMenuHandleChoices(){
-		LockedMeWelcome.firstMenu();
+		LockedMeWelcome.mainMenu();
 		try{
 			Scanner scanner = new Scanner(System.in);
 			int choiceEntered = scanner.nextInt();
@@ -29,8 +31,9 @@ public class LockedMeChoiceHandle {
 		}
 	}
 
+	//This method will handle choices made in the Sub Menu
 	public static void secondMenuHandleChoices(){
-		LockedMeWelcome.secondMenu();
+		LockedMeWelcome.subMenu();
 		try{
 			Scanner scanner = new Scanner(System.in);
 			int choiceEntered = scanner.nextInt();
