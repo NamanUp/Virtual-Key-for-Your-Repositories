@@ -1,6 +1,6 @@
 package lockedMePack;
 
-public class LockedMeWelcome {
+public class LockedMeWelcomeScreen {
 	
 	public static void printWelcomeScreen(String applicationName, String developerName){
 		

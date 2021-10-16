@@ -2,11 +2,11 @@ package lockedMePack;
 
 import java.util.Scanner;
 
-public class LockedMeChoiceHandle {
+public class LockedMeInputHandling {
 
 	//This method will handle choices made in the Main Menu
 	public static void firstMenuHandleChoices(){
-		LockedMeWelcome.mainMenu();
+		LockedMeWelcomeScreen.mainMenu();
 		try{
 			Scanner scanner = new Scanner(System.in);
 			int choiceEntered = scanner.nextInt();
@@ -22,18 +22,18 @@ public class LockedMeChoiceHandle {
 					System.out.println("\nApplication Closed Successfully.");
 					System.exit(0);
 				default :
-					System.out.println("\nPlease enter the 1,2 or 3 option to proceed");
+					printErrorMessage();
 					firstMenuHandleChoices();
 			}
 		} catch (Exception e){
-			System.out.println("\nPlease enter the 1,2 or 3 option to proceed");
+			printErrorMessage();
 			firstMenuHandleChoices();
 		}
 	}
 
 	//This method will handle choices made in the Sub Menu
 	public static void secondMenuHandleChoices(){
-		LockedMeWelcome.subMenu();
+		LockedMeWelcomeScreen.subMenu();
 		try{
 			Scanner scanner = new Scanner(System.in);
 			int choiceEntered = scanner.nextInt();
@@ -56,12 +56,16 @@ public class LockedMeChoiceHandle {
 				case 4:
 					firstMenuHandleChoices();
 				default :
-					System.out.println("\nPlease enter the 1,2 or 3 option to proceed.");
+					printErrorMessage();
 			}
 			secondMenuHandleChoices();
 		} catch (Exception e){
-			System.out.println("\nPlease enter the 1,2 or 3 option to proceed.");
+			printErrorMessage();
 			secondMenuHandleChoices();
 		}
+	}
+
+	public static void printErrorMessage(){
+		System.out.println("\nPlease enter only 1,2 or 3.");
 	}
 }
